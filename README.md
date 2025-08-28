@@ -1,55 +1,65 @@
-# GitHub Pages Example
+# Koiraystävälliset Paikat Suomessa
 
-This is an example static website created to demonstrate GitHub Pages functionality.
+Tervetuloa Suomen koiraystävällisimpään sivustoon! Tämä on staattinen verkkosivusto, joka auttaa löytämään ja ilmoittamaan koiraystävällisiä paikkoja, yrityksiä ja tapahtumia Suomessa.
 
-## What's Included
+## Sisältö
 
-- **index.html** - Main HTML page with semantic structure and accessibility features
-- **styles.css** - Modern CSS with responsive design and smooth animations  
-- **script.js** - JavaScript for enhanced interactivity and smooth scrolling
+- **index.html** - Pääsivu suomalaisella sisällöllä ja saavutettavuusominaisuuksilla
+- **styles.css** - Moderni CSS responsiivisella suunnittelulla ja sujuvilla animaatioilla  
+- **script.js** - JavaScript parannettuun interaktiivisuuteen ja sujuvaan vieritykseen
 
-## Features
+## Ominaisuudet
 
-- ✅ Responsive design that works on all devices
-- ✅ Smooth scrolling navigation
-- ✅ Modern CSS with animations and hover effects
-- ✅ Accessible HTML structure
-- ✅ Fast loading and optimized
-- ✅ Clean, professional design
+- ✅ Responsiivinen suunnittelu, joka toimii kaikilla laitteilla
+- ✅ Sujuva vieritysnavigaatio
+- ✅ Moderni CSS animaatioilla ja hover-efekteillä
+- ✅ Saavutettava HTML-rakenne
+- ✅ Nopea latautuminen ja optimoitu
+- ✅ Siisti, ammattimainen suunnittelu
+- ✅ Suomen kartta pohja
+- ✅ Koiraystävällisten paikkojen hakutoiminto
+- ✅ Tapahtumalistaukset
 
-## How to Use
+## Sivuston Osiot
 
-1. Fork this repository or use it as a template
-2. Enable GitHub Pages in your repository settings
-3. Customize the content in `index.html` to match your needs
-4. Modify `styles.css` for your preferred styling
-5. Your site will be available at `https://yourusername.github.io/repository-name`
+1. **Kartta** - Interaktiivinen Suomen kartta koiraystävällisistä paikoista
+2. **Paikat** - Koiraystävälliset puistot, yritykset ja uimarannat
+3. **Tapahtumat** - Koiraystävälliset tapahtumat ympäri Suomea
+4. **Yhteystiedot** - Tapa ottaa yhteyttä ja lisätä uusia paikkoja
 
-## GitHub Pages Setup
+## Käyttö
 
-To enable GitHub Pages for this repository:
+1. Kloonaa tämä repositorio tai käytä sitä mallina
+2. Ota GitHub Pages käyttöön repositorion asetuksissa
+3. Mukauta sisältöä `index.html`-tiedostossa tarpeidesi mukaan
+4. Muokkaa `styles.css`-tiedostoa haluamaksesi tyylittelyksi
+5. Sivustosi on saatavilla osoitteessa `https://käyttäjänimesi.github.io/repositorio-nimi`
 
-1. Go to repository Settings
-2. Scroll down to "Pages" section
-3. Under "Source", select "Deploy from a branch"
-4. Choose "main" branch and "/ (root)" folder
-5. Click "Save"
+## GitHub Pages Asetukset
 
-Your site will be available at the URL provided by GitHub.
+GitHub Pagesin käyttöönotto tälle repositoriolle:
 
-## Customization
+1. Siirry repositorion Asetuksiin (Settings)
+2. Vieritä alas "Pages"-osioon
+3. Valitse "Source"-kohdasta "Deploy from a branch"
+4. Valitse "main"-haara ja "/ (root)"-kansio
+5. Klikkaa "Save"
 
-Feel free to:
-- Replace the content with your own information
-- Modify colors and styling in `styles.css`
-- Add more sections or pages
-- Include your own images and assets
-- Integrate with Jekyll for more advanced features
+Sivustosi on saatavilla GitHubin antamassa URL-osoitteessa.
 
-## Browser Support
+## Mukauttaminen
 
-This example works in all modern browsers and includes fallbacks for older browsers.
+Voit vapaasti:
+- Korvata sisällön omilla tiedoillasi
+- Muokata värejä ja tyyliä `styles.css`-tiedostossa
+- Lisätä uusia osioita tai sivuja
+- Sisällyttää omia kuvia ja resursseja
+- Integroida Jekyllin kanssa kehittyneempiä ominaisuuksia varten
+
+## Selaintuki
+
+Tämä sivusto toimii kaikissa moderneissa selaimissa ja sisältää fallback-ratkaisut vanhemmille selaimille.
 
 ---
 
-Built with ❤️ for the GitHub Pages community!
+Rakennettu 🐕 rakkaudella Suomen koiraharrastajille!

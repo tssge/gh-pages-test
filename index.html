@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Pages Example</title>
-    <meta name="description" content="An example GitHub Pages website demonstrating basic HTML, CSS, and responsive design.">
+    <title>Koiraystävälliset Paikat Suomessa</title>
+    <meta name="description" content="Löydä ja ilmoita koiraystävällisiä paikkoja, yrityksiä ja tapahtumia Suomessa. Helppo tapa löytää koiralle sopivia sijainteja.">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <header>
         <nav>
-            <h1>GitHub Pages Example</h1>
+            <h1>Koiraystävälliset Paikat</h1>
             <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#kartta">Kartta</a></li>
+                <li><a href="#paikat">Paikat</a></li>
+                <li><a href="#tapahtumat">Tapahtumat</a></li>
+                <li><a href="#kalenteri">Kalenteri</a></li>
+                <li><a href="#ilmoittaudu">Ilmoittaudu</a></li>
+                <li><a href="#yhteystiedot">Yhteystiedot</a></li>
             </ul>
         </nav>
     </header>
@@ -23,63 +27,229 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h2>Welcome to GitHub Pages!</h2>
-                <p>This is an example static website hosted with GitHub Pages. It demonstrates how easy it is to create and deploy a website using GitHub's free hosting service.</p>
-                <a href="#about" class="cta-button">Learn More</a>
+                <h2>🐕 Tervetuloa Suomen koiraystävällisimpään sivustoon! 🐾</h2>
+                <p>Helppo tapa löytää ja ilmoittaa koiraystävällisiä sijainteja, yrityksiä ja tapahtumia Suomessa. Tutustu karttaan ja löydä parhaat paikat koirasi kanssa.</p>
+                <a href="#kartta" class="cta-button">Tutustu Karttaan</a>
             </div>
         </section>
 
-        <section id="about" class="content-section">
+        <section id="kartta" class="content-section">
             <div class="container">
-                <h2>About GitHub Pages</h2>
-                <p>GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub, optionally runs the files through a build process, and publishes a website.</p>
+                <h2>🗺️ Suomen Kartta 🐾</h2>
+                <p>Interaktiivinen kartta koiraystävällisistä paikoista. Voit zoomata, selata ja lisätä uusia sijainteja kartalle.</p>
+                
+                <div class="map-container">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="paikat" class="content-section alternate">
+            <div class="container">
+                <h2>🐕 Koiraystävälliset Paikat 🐾</h2>
+                <p>Löydä parhaat paikat koirasi kanssa Suomessa. Voit myös lisätä omia suosituksiasi!</p>
                 
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <h3>🚀 Easy Deployment</h3>
-                        <p>Push your code to GitHub and your site is automatically deployed.</p>
+                        <h3>🏞️ Puistot ja Ulkoilualueet</h3>
+                        <p>Löydä koirille sopivia puistoja ja ulkoilualueita, joissa koira voi juosta vapaana.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>💰 Free Hosting</h3>
-                        <p>Host your static websites for free with GitHub Pages.</p>
+                        <h3>🏪 Koiraystävälliset Yritykset</h3>
+                        <p>Kaupat, ravintolat ja palvelut, jotka toivottavat koirat tervetulleiksi.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>🔧 Custom Domains</h3>
-                        <p>Use your own custom domain or the provided github.io domain.</p>
+                        <h3>🏖️ Koirarannat ja Uimarannat</h3>
+                        <p>Löydä koirille sopivia uimarantoja ja vesistöjä ympäri Suomen.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="features" class="content-section alternate">
+        <section id="tapahtumat" class="content-section">
             <div class="container">
-                <h2>Getting Started</h2>
-                <ol class="steps-list">
-                    <li>Create a repository named <code>username.github.io</code> or enable Pages in repository settings</li>
-                    <li>Add your HTML, CSS, and JavaScript files to the repository</li>
-                    <li>Push your changes to the main branch</li>
-                    <li>Visit your site at <code>https://username.github.io</code></li>
-                </ol>
+                <h2>🎉 Koiraystävälliset Tapahtumat 🐕</h2>
+                <p>Löydä koiraystävällisiä tapahtumia Suomessa tai ilmoita oma tapahtumasi!</p>
+                <div class="events-info">
+                    <div class="event-types">
+                        <h3>🐾 Tapahtumatyypit:</h3>
+                        <ul>
+                            <li>🐕 Koiranäyttelyt ja -kilpailut</li>
+                            <li>🎾 Agilityharjoitukset ja -kilpailut</li>
+                            <li>🚶 Koirakavereiden kävelytapahtumat</li>
+                            <li>📚 Koirakoulutuskurssit</li>
+                            <li>🎉 Koiraystävälliset festivaalit</li>
+                            <li>🏥 Ilmaiset terveystarkastukset</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kalenteri" class="content-section alternate">
+            <div class="container">
+                <h2>📅 Tapahtumakalenteri 🐾</h2>
+                <p>Selaa tulevia koiraystävällisiä tapahtumia kalenterista. Klikkaa tapahtumaa nähdäksesi lisätietoja.</p>
                 
-                <div class="code-example">
-                    <h3>Example Repository Structure:</h3>
-                    <pre><code>my-github-pages-site/
-├── index.html
-├── styles.css
-├── script.js
-└── images/
-    └── logo.png</code></pre>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prevMonth" class="calendar-nav">❮</button>
+                        <h3 id="currentMonth"></h3>
+                        <button id="nextMonth" class="calendar-nav">❯</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-weekdays">
+                            <div>Ma</div>
+                            <div>Ti</div>
+                            <div>Ke</div>
+                            <div>To</div>
+                            <div>Pe</div>
+                            <div>La</div>
+                            <div>Su</div>
+                        </div>
+                        <div id="calendarDays" class="calendar-days"></div>
+                    </div>
+                </div>
+                
+                <div id="eventDetails" class="event-details" style="display: none;">
+                    <h4>Tapahtuman tiedot</h4>
+                    <div id="eventInfo"></div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="content-section">
+        <section id="ilmoittaudu" class="content-section">
             <div class="container">
-                <h2>Learn More</h2>
-                <p>Ready to create your own GitHub Pages site? Check out the official documentation and start building!</p>
-                <div class="links">
-                    <a href="https://pages.github.com/" target="_blank" class="external-link">GitHub Pages Documentation</a>
-                    <a href="https://docs.github.com/en/pages" target="_blank" class="external-link">GitHub Docs</a>
+                <h2>📝 Ilmoita Yritys tai Tapahtuma 🐕</h2>
+                <p>Lisää oma yrityksesi tai tapahtumasi koiraystävällisten paikkojen karttaan. Täytä lomake ja valitse sijainti kartalta.</p>
+                
+                <div class="registration-form">
+                    <form id="businessForm">
+                        <div class="form-section">
+                            <h3>📍 Perustiedot</h3>
+                            <div class="form-group">
+                                <label for="businessName">Yrityksen/Tapahtuman nimi:</label>
+                                <input type="text" id="businessName" name="businessName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="businessType">Tyyppi:</label>
+                                <select id="businessType" name="businessType" required>
+                                    <option value="">Valitse tyyppi</option>
+                                    <option value="restaurant">Ravintola/Kahvila</option>
+                                    <option value="park">Puisto/Ulkoilualue</option>
+                                    <option value="shop">Kauppa/Palvelu</option>
+                                    <option value="hotel">Hotelli/Majoitus</option>
+                                    <option value="event">Tapahtuma</option>
+                                    <option value="beach">Uimaranta</option>
+                                    <option value="vet">Eläinlääkäri</option>
+                                    <option value="other">Muu</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">Kuvaus:</label>
+                                <textarea id="description" name="description" rows="3" placeholder="Kerro lyhyesti paikasta tai tapahtumasta"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>🗺️ Sijainti</h3>
+                            <p>Klikkaa karttaa valitaksesi sijainti:</p>
+                            <div id="locationMap"></div>
+                            <div class="form-group">
+                                <label for="address">Osoite:</label>
+                                <input type="text" id="address" name="address" placeholder="Katuosoite, kaupunki">
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>🐕 Koiraystävällisyys</h3>
+                            <p>Valitse sopivat vaihtoehdot:</p>
+                            
+                            <div class="checkbox-group">
+                                <h4>Koiran koko:</h4>
+                                <label><input type="checkbox" name="dogSize" value="small"> Pienet koirat (alle 10kg)</label>
+                                <label><input type="checkbox" name="dogSize" value="medium"> Keskikokoiset koirat (10-25kg)</label>
+                                <label><input type="checkbox" name="dogSize" value="large"> Suuret koirat (yli 25kg)</label>
+                                <label><input type="checkbox" name="dogSize" value="all"> Kaikki koirat tervetulleita</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <h4>Sallitut alueet:</h4>
+                                <label><input type="checkbox" name="areas" value="terrace"> Terassi</label>
+                                <label><input type="checkbox" name="areas" value="indoor"> Sisätilat</label>
+                                <label><input type="checkbox" name="areas" value="garden"> Piha/Puutarha</label>
+                                <label><input type="checkbox" name="areas" value="entire"> Koko tila</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <h4>Erityispalvelut:</h4>
+                                <label><input type="checkbox" name="services" value="water"> Vesikulho koirille</label>
+                                <label><input type="checkbox" name="services" value="treats"> Koiran herkkuja</label>
+                                <label><input type="checkbox" name="services" value="table"> Erillinen pöytä/koirakärry</label>
+                                <label><input type="checkbox" name="services" value="leash"> Hihnakoukkuja</label>
+                                <label><input type="checkbox" name="services" value="toys"> Koiran leluja</label>
+                                <label><input type="checkbox" name="services" value="training"> Koulutusalue</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <h4>Aikarajoitukset:</h4>
+                                <label><input type="checkbox" name="timeRestrictions" value="dayonly"> Vain päivisin</label>
+                                <label><input type="checkbox" name="timeRestrictions" value="evenings"> Myös iltaisin</label>
+                                <label><input type="checkbox" name="timeRestrictions" value="weekends"> Vain viikonloppuisin</label>
+                                <label><input type="checkbox" name="timeRestrictions" value="always"> Aina avoinna koirille</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <h4>Lisävaatimukset:</h4>
+                                <label><input type="checkbox" name="requirements" value="leash"> Koira pidettävä hihnassa</label>
+                                <label><input type="checkbox" name="requirements" value="vaccination"> Rokotustodistus vaaditaan</label>
+                                <label><input type="checkbox" name="requirements" value="muzzle"> Kuonokoppa vaaditaan (suuret koirat)</label>
+                                <label><input type="checkbox" name="requirements" value="wellbehaved"> Hyvin käyttäytyvät koirat</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>📞 Yhteystiedot</h3>
+                            <div class="form-group">
+                                <label for="contactName">Yhteyshenkilö:</label>
+                                <input type="text" id="contactName" name="contactName">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Puhelinnumero:</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Sähköposti:</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="website">Nettisivu:</label>
+                                <input type="url" id="website" name="website" placeholder="https://...">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">🐾 Lähetä ilmoitus</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="yhteystiedot" class="content-section alternate">
+            <div class="container">
+                <h2>📞 Yhteystiedot ja Osallistuminen 🐾</h2>
+                <p>Haluatko lisätä uuden koiraystävällisen paikan tai tapahtuman? Ota yhteyttä tai lähetä meille ehdotuksesi!</p>
+                <div class="contact-info">
+                    <div class="contact-methods">
+                        <h3>Ota yhteyttä:</h3>
+                        <p>📧 Sähköposti: info@koiraystävallisetpaikat.fi</p>
+                        <p>📱 Sosiaalinen media: @koirapaikkafi</p>
+                        <p>🗺️ Lisää uusi paikka tai tapahtuma suoraan karttaan</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -87,10 +257,11 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 GitHub Pages Example. Built with ❤️ and hosted on GitHub Pages.</p>
+            <p>&copy; 2025 Koiraystävälliset Paikat Suomessa. Rakennettu 🐕 rakkaudella Suomen koiraharrastajille.</p>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
