@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koiraystävälliset Paikat Suomessa</title>
     <meta name="description" content="Löydä ja ilmoita koiraystävällisiä paikkoja, yrityksiä ja tapahtumia Suomessa. Helppo tapa löytää koiralle sopivia sijainteja.">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
@@ -16,6 +17,8 @@
                 <li><a href="#kartta">Kartta</a></li>
                 <li><a href="#paikat">Paikat</a></li>
                 <li><a href="#tapahtumat">Tapahtumat</a></li>
+                <li><a href="#kalenteri">Kalenteri</a></li>
+                <li><a href="#ilmoittaudu">Ilmoittaudu</a></li>
                 <li><a href="#yhteystiedot">Yhteystiedot</a></li>
             </ul>
         </nav>
@@ -33,21 +36,10 @@
         <section id="kartta" class="content-section">
             <div class="container">
                 <h2>🗺️ Suomen Kartta 🐾</h2>
-                <p>Tutustu interaktiiviseen karttaan ja löydä koiraystävällisiä paikkoja läheltäsi. Kartta päivitetään jatkuvasti uusilla sijainneilla.</p>
+                <p>Interaktiivinen kartta koiraystävällisistä paikoista. Voit zoomata, selata ja lisätä uusia sijainteja kartalle.</p>
                 
                 <div class="map-container">
-                    <div class="map-placeholder">
-                        <svg viewBox="0 0 400 300" class="finland-map">
-                            <path d="M50 250 Q50 200 100 180 Q150 160 200 170 Q250 180 300 200 Q350 220 370 250 Q350 280 300 290 Q250 295 200 280 Q150 285 100 270 Q50 260 50 250 Z" 
-                                  fill="#4ECDC4" stroke="#8B4513" stroke-width="3"/>
-                            <text x="200" y="230" text-anchor="middle" fill="#fff" font-size="18" font-weight="bold">SUOMI</text>
-                            <!-- Dog paw prints on map -->
-                            <text x="150" y="200" text-anchor="middle" fill="#FF6B6B" font-size="12">🐾</text>
-                            <text x="250" y="220" text-anchor="middle" fill="#FF6B6B" font-size="12">🐾</text>
-                            <text x="200" y="260" text-anchor="middle" fill="#FF6B6B" font-size="12">🐾</text>
-                        </svg>
-                        <p class="map-note">Interaktiivinen kartta tulossa pian!</p>
-                    </div>
+                    <div id="map"></div>
                 </div>
             </div>
         </section>
@@ -94,6 +86,159 @@
             </div>
         </section>
 
+        <section id="kalenteri" class="content-section alternate">
+            <div class="container">
+                <h2>📅 Tapahtumakalenteri 🐾</h2>
+                <p>Selaa tulevia koiraystävällisiä tapahtumia kalenterista. Klikkaa tapahtumaa nähdäksesi lisätietoja.</p>
+                
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prevMonth" class="calendar-nav">❮</button>
+                        <h3 id="currentMonth"></h3>
+                        <button id="nextMonth" class="calendar-nav">❯</button>
+                    </div>
+                    <div class="calendar-grid">
+                        <div class="calendar-weekdays">
+                            <div>Ma</div>
+                            <div>Ti</div>
+                            <div>Ke</div>
+                            <div>To</div>
+                            <div>Pe</div>
+                            <div>La</div>
+                            <div>Su</div>
+                        </div>
+                        <div id="calendarDays" class="calendar-days"></div>
+                    </div>
+                </div>
+                
+                <div id="eventDetails" class="event-details" style="display: none;">
+                    <h4>Tapahtuman tiedot</h4>
+                    <div id="eventInfo"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ilmoittaudu" class="content-section">
+            <div class="container">
+                <h2>📝 Ilmoita Yritys tai Tapahtuma 🐕</h2>
+                <p>Lisää oma yrityksesi tai tapahtumasi koiraystävällisten paikkojen karttaan. Täytä lomake ja valitse sijainti kartalta.</p>
+                
+                <div class="registration-form">
+                    <form id="businessForm">
+                        <div class="form-section">
+                            <h3>📍 Perustiedot</h3>
+                            <div class="form-group">
+                                <label for="businessName">Yrityksen/Tapahtuman nimi:</label>
+                                <input type="text" id="businessName" name="businessName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="businessType">Tyyppi:</label>
+                                <select id="businessType" name="businessType" required>
+                                    <option value="">Valitse tyyppi</option>
+                                    <option value="restaurant">Ravintola/Kahvila</option>
+                                    <option value="park">Puisto/Ulkoilualue</option>
+                                    <option value="shop">Kauppa/Palvelu</option>
+                                    <option value="hotel">Hotelli/Majoitus</option>
+                                    <option value="event">Tapahtuma</option>
+                                    <option value="beach">Uimaranta</option>
+                                    <option value="vet">Eläinlääkäri</option>
+                                    <option value="other">Muu</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="description">Kuvaus:</label>
+                                <textarea id="description" name="description" rows="3" placeholder="Kerro lyhyesti paikasta tai tapahtumasta"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>🗺️ Sijainti</h3>
+                            <p>Klikkaa karttaa valitaksesi sijainti:</p>
+                            <div id="locationMap"></div>
+                            <div class="form-group">
+                                <label for="address">Osoite:</label>
+                                <input type="text" id="address" name="address" placeholder="Katuosoite, kaupunki">
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>🐕 Koiraystävällisyys</h3>
+                            <p>Valitse sopivat vaihtoehdot:</p>
+                            
+                            <div class="checkbox-group">
+                                <h4>Koiran koko:</h4>
+                                <label><input type="checkbox" name="dogSize" value="small"> Pienet koirat (alle 10kg)</label>
+                                <label><input type="checkbox" name="dogSize" value="medium"> Keskikokoiset koirat (10-25kg)</label>
+                                <label><input type="checkbox" name="dogSize" value="large"> Suuret koirat (yli 25kg)</label>
+                                <label><input type="checkbox" name="dogSize" value="all"> Kaikki koirat tervetulleita</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <h4>Sallitut alueet:</h4>
+                                <label><input type="checkbox" name="areas" value="terrace"> Terassi</label>
+                                <label><input type="checkbox" name="areas" value="indoor"> Sisätilat</label>
+                                <label><input type="checkbox" name="areas" value="garden"> Piha/Puutarha</label>
+                                <label><input type="checkbox" name="areas" value="entire"> Koko tila</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <h4>Erityispalvelut:</h4>
+                                <label><input type="checkbox" name="services" value="water"> Vesikulho koirille</label>
+                                <label><input type="checkbox" name="services" value="treats"> Koiran herkkuja</label>
+                                <label><input type="checkbox" name="services" value="table"> Erillinen pöytä/koirakärry</label>
+                                <label><input type="checkbox" name="services" value="leash"> Hihnakoukkuja</label>
+                                <label><input type="checkbox" name="services" value="toys"> Koiran leluja</label>
+                                <label><input type="checkbox" name="services" value="training"> Koulutusalue</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <h4>Aikarajoitukset:</h4>
+                                <label><input type="checkbox" name="timeRestrictions" value="dayonly"> Vain päivisin</label>
+                                <label><input type="checkbox" name="timeRestrictions" value="evenings"> Myös iltaisin</label>
+                                <label><input type="checkbox" name="timeRestrictions" value="weekends"> Vain viikonloppuisin</label>
+                                <label><input type="checkbox" name="timeRestrictions" value="always"> Aina avoinna koirille</label>
+                            </div>
+                            
+                            <div class="checkbox-group">
+                                <h4>Lisävaatimukset:</h4>
+                                <label><input type="checkbox" name="requirements" value="leash"> Koira pidettävä hihnassa</label>
+                                <label><input type="checkbox" name="requirements" value="vaccination"> Rokotustodistus vaaditaan</label>
+                                <label><input type="checkbox" name="requirements" value="muzzle"> Kuonokoppa vaaditaan (suuret koirat)</label>
+                                <label><input type="checkbox" name="requirements" value="wellbehaved"> Hyvin käyttäytyvät koirat</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h3>📞 Yhteystiedot</h3>
+                            <div class="form-group">
+                                <label for="contactName">Yhteyshenkilö:</label>
+                                <input type="text" id="contactName" name="contactName">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Puhelinnumero:</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Sähköposti:</label>
+                                <input type="email" id="email" name="email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="website">Nettisivu:</label>
+                                <input type="url" id="website" name="website" placeholder="https://...">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">🐾 Lähetä ilmoitus</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <section id="yhteystiedot" class="content-section alternate">
             <div class="container">
                 <h2>📞 Yhteystiedot ja Osallistuminen 🐾</h2>
@@ -116,6 +261,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
