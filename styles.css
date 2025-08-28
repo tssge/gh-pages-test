@@ -14,6 +14,46 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #fff;
+    background-image: 
+        radial-gradient(circle at 20% 50%, transparent 20%, rgba(139, 69, 19, 0.02) 21%, rgba(139, 69, 19, 0.02) 25%, transparent 26%, transparent),
+        radial-gradient(circle at 80% 20%, transparent 20%, rgba(78, 205, 196, 0.02) 21%, rgba(78, 205, 196, 0.02) 25%, transparent 26%, transparent),
+        radial-gradient(circle at 40% 80%, transparent 20%, rgba(255, 107, 107, 0.02) 21%, rgba(255, 107, 107, 0.02) 25%, transparent 26%, transparent);
+    background-size: 200px 200px, 300px 300px, 250px 250px;
+    background-position: 0 0, 100px 100px, 50px 150px;
+    position: relative;
+}
+
+body::before {
+    content: "🐾";
+    position: fixed;
+    top: 20%;
+    left: 3%;
+    font-size: 2rem;
+    opacity: 0.05;
+    z-index: -1;
+    animation: bodyPaw1 12s ease-in-out infinite;
+}
+
+body::after {
+    content: "🐾";
+    position: fixed;
+    bottom: 30%;
+    right: 5%;
+    font-size: 1.5rem;
+    opacity: 0.05;
+    z-index: -1;
+    animation: bodyPaw2 15s ease-in-out infinite reverse;
+}
+
+@keyframes bodyPaw1 {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-20px) rotate(10deg); }
+    66% { transform: translateY(10px) rotate(-5deg); }
+}
+
+@keyframes bodyPaw2 {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(15deg); }
 }
 
 .container {
@@ -24,13 +64,41 @@ body {
 
 /* Header and Navigation */
 header {
-    background: linear-gradient(90deg, #8B4513 0%, #CD853F 100%);
+    background: linear-gradient(135deg, #8B4513 0%, #CD853F 50%, #D2691E 100%);
     color: white;
     padding: 1rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "🐾";
+    position: absolute;
+    font-size: 4rem;
+    opacity: 0.1;
+    top: -10px;
+    right: 50px;
+    animation: headerPaw 8s ease-in-out infinite;
+}
+
+header::after {
+    content: "🐾";
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.1;
+    bottom: -5px;
+    left: 100px;
+    animation: headerPaw 6s ease-in-out infinite reverse;
+}
+
+@keyframes headerPaw {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(3deg); }
+    75% { transform: translateY(5px) rotate(-3deg); }
 }
 
 nav {
@@ -43,18 +111,33 @@ nav {
 }
 
 nav h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    position: relative;
 }
 
 nav h1::before {
     content: "🐕 ";
-    font-size: 1.2em;
+    font-size: 1.3em;
+    animation: dogWag 2s ease-in-out infinite;
 }
 
 nav h1::after {
     content: " 🐾";
-    font-size: 0.8em;
+    font-size: 1em;
+    animation: pawShake 3s ease-in-out infinite;
+}
+
+@keyframes dogWag {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+}
+
+@keyframes pawShake {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 nav ul {
@@ -66,18 +149,38 @@ nav ul {
 nav a {
     color: white;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 20px;
+    position: relative;
+}
+
+nav a::before {
+    content: "🐾";
+    position: absolute;
+    left: -5px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    font-size: 0.8em;
 }
 
 nav a:hover {
-    color: #58a6ff;
+    color: #FFD93D;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+nav a:hover::before {
+    opacity: 1;
+    transform: translateX(0px);
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #ff9a8b 0%, #a8e6cf 100%);
+    background: linear-gradient(135deg, #ff9a8b 0%, #fecfef 25%, #fecfef 75%, #a8e6cf 100%);
     color: white;
-    padding: 4rem 0;
+    padding: 5rem 0;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -86,21 +189,29 @@ nav a:hover {
 .hero::before {
     content: "🐾";
     position: absolute;
-    font-size: 8rem;
-    opacity: 0.1;
-    top: 10%;
-    right: 10%;
-    animation: float 6s ease-in-out infinite;
+    font-size: 12rem;
+    opacity: 0.15;
+    top: 5%;
+    right: 5%;
+    animation: float 8s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
 
 .hero::after {
-    content: "🐾";
+    content: "🐕";
     position: absolute;
-    font-size: 5rem;
-    opacity: 0.1;
-    bottom: 15%;
-    left: 15%;
-    animation: float 4s ease-in-out infinite reverse;
+    font-size: 8rem;
+    opacity: 0.15;
+    bottom: 10%;
+    left: 8%;
+    animation: dogBounce 6s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+@keyframes dogBounce {
+    0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+    25% { transform: translateY(-15px) rotate(2deg) scale(1.05); }
+    75% { transform: translateY(-10px) rotate(-2deg) scale(0.95); }
 }
 
 @keyframes float {
@@ -124,42 +235,138 @@ nav a:hover {
 
 .cta-button {
     display: inline-block;
-    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #FFD93D);
     color: white;
-    padding: 12px 30px;
-    border-radius: 25px;
+    padding: 15px 35px;
+    border-radius: 30px;
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
     position: relative;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .cta-button::before {
     content: "🐾 ";
+    font-size: 1.2em;
+    animation: buttonPaw 2s ease-in-out infinite;
+}
+
+.cta-button::after {
+    content: " 🐕";
     font-size: 1.1em;
+    animation: buttonDog 3s ease-in-out infinite reverse;
+}
+
+@keyframes buttonPaw {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes buttonDog {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(3deg); }
+    75% { transform: rotate(-3deg); }
 }
 
 .cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(78, 205, 196, 0.5);
+    background: linear-gradient(45deg, #FF6B6B, #FFD93D, #4ECDC4);
 }
 
 /* Content Sections */
 .content-section {
-    padding: 4rem 0;
+    padding: 5rem 0;
     position: relative;
+    overflow: hidden;
+}
+
+.content-section::before {
+    content: "🐾";
+    position: absolute;
+    top: 10%;
+    right: 2%;
+    font-size: 3rem;
+    opacity: 0.08;
+    animation: sectionPaw 10s ease-in-out infinite;
+}
+
+.content-section::after {
+    content: "🐾";
+    position: absolute;
+    bottom: 10%;
+    left: 2%;
+    font-size: 2.5rem;
+    opacity: 0.08;
+    animation: sectionPaw 8s ease-in-out infinite reverse;
+}
+
+@keyframes sectionPaw {
+    0%, 100% { transform: translateX(0px) rotate(0deg); }
+    50% { transform: translateX(10px) rotate(10deg); }
 }
 
 .content-section.alternate {
-    background: linear-gradient(135deg, #FFF8DC 0%, #F5F5DC 100%);
+    background: linear-gradient(135deg, #FFF8DC 0%, #F5F5DC 50%, #FFFACD 100%);
+    position: relative;
+}
+
+.content-section.alternate::before {
+    content: "🐕";
+    position: absolute;
+    top: 5%;
+    left: 3%;
+    font-size: 4rem;
+    opacity: 0.06;
+    animation: dogFloat 12s ease-in-out infinite;
 }
 
 .content-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    margin-bottom: 2.5rem;
     text-align: center;
     color: #8B4513;
+    text-shadow: 2px 2px 4px rgba(139, 69, 19, 0.1);
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.content-section h2::before {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
+    border-radius: 2px;
+}
+
+.content-section h2::after {
+    content: "🐾";
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: #4ECDC4;
+    animation: titlePaw 4s ease-in-out infinite;
+}
+
+@keyframes titlePaw {
+    0%, 100% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.2); }
+}
+
+@keyframes dogFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-25px) rotate(5deg); }
+    66% { transform: translateY(15px) rotate(-3deg); }
 }
 
 .content-section p {
@@ -180,38 +387,54 @@ nav a:hover {
 }
 
 .feature-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     background-clip: padding-box;
+    overflow: hidden;
 }
 
 .feature-card::before {
     content: "";
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4);
-    border-radius: 17px;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4, #FFD93D);
+    border-radius: 23px;
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease;
+}
+
+.feature-card::after {
+    content: "🐾";
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    transition: all 0.4s ease;
 }
 
 .feature-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
 }
 
 .feature-card:hover::before {
     opacity: 1;
+}
+
+.feature-card:hover::after {
+    opacity: 0.8;
+    transform: rotate(15deg) scale(1.2);
 }
 
 .feature-card h3 {
@@ -290,14 +513,47 @@ nav a:hover {
 
 /* Footer */
 footer {
-    background: linear-gradient(90deg, #8B4513 0%, #CD853F 100%);
+    background: linear-gradient(135deg, #8B4513 0%, #CD853F 50%, #D2691E 100%);
     color: white;
     text-align: center;
-    padding: 2rem 0;
+    padding: 3rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: "🐕";
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 3rem;
+    opacity: 0.15;
+    animation: footerDog 10s ease-in-out infinite;
+}
+
+footer::after {
+    content: "🐾";
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 2.5rem;
+    opacity: 0.15;
+    animation: footerPaw 8s ease-in-out infinite reverse;
+}
+
+@keyframes footerDog {
+    0%, 100% { transform: translateX(0px) rotate(0deg); }
+    50% { transform: translateX(15px) rotate(8deg); }
+}
+
+@keyframes footerPaw {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    50% { transform: translateY(-10px) scale(1.1); }
 }
 
 footer p {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 footer p::before {
@@ -373,50 +629,67 @@ footer p::after {
 .map-container::before {
     content: "🐾";
     position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 2rem;
-    opacity: 0.3;
-    animation: pawPrint 3s ease-in-out infinite;
+    top: 10px;
+    left: 10px;
+    font-size: 3rem;
+    opacity: 0.4;
+    animation: pawPrint 4s ease-in-out infinite;
+    z-index: 1;
 }
 
 .map-container::after {
     content: "🐾";
     position: absolute;
-    bottom: 20px;
-    right: 20px;
-    font-size: 2rem;
-    opacity: 0.3;
-    animation: pawPrint 3s ease-in-out infinite reverse;
+    bottom: 10px;
+    right: 10px;
+    font-size: 3rem;
+    opacity: 0.4;
+    animation: pawPrint 4s ease-in-out infinite reverse;
+    z-index: 1;
 }
 
 @keyframes pawPrint {
     0%, 100% { transform: scale(1) rotate(0deg); }
-    50% { transform: scale(1.1) rotate(10deg); }
+    25% { transform: scale(1.2) rotate(10deg); }
+    75% { transform: scale(0.9) rotate(-10deg); }
 }
 
 .map-placeholder {
-    background: linear-gradient(135deg, #FFF8DC 0%, #F0E68C 100%);
-    border: 3px dashed #4ECDC4;
-    border-radius: 20px;
-    padding: 2rem;
-    max-width: 600px;
+    background: linear-gradient(135deg, #FFF8DC 0%, #F0E68C 50%, #FFFACD 100%);
+    border: 4px dashed #4ECDC4;
+    border-radius: 25px;
+    padding: 3rem;
+    max-width: 650px;
     margin: 0 auto;
     position: relative;
+    box-shadow: 0 8px 25px rgba(78, 205, 196, 0.2);
+    transition: all 0.3s ease;
+}
+
+.map-placeholder:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(78, 205, 196, 0.3);
+    border-color: #FF6B6B;
 }
 
 .finland-map {
     width: 100%;
     max-width: 400px;
     height: auto;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    filter: drop-shadow(0 6px 15px rgba(0,0,0,0.15));
+    transition: filter 0.3s ease;
+}
+
+.map-placeholder:hover .finland-map {
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.2));
 }
 
 .map-note {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    color: #4ECDC4;
-    font-weight: 500;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: #8B4513;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
 }
 
 .map-note::before {
