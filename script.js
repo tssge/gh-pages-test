@@ -16,8 +16,146 @@ const sampleEvents = {
     '2025-02-02': [
         { title: '🚶 Koirakavereiden kävely', time: '14:00', location: 'Keskuspuisto' }
     ],
+    '2025-02-08': [
+        { title: '🏥 Ilmainen terveystarkastus', time: '09:00', location: 'Eläinklinikka Vantaa' }
+    ],
     '2025-02-15': [
         { title: '📚 Koirakoulutuskurssi', time: '10:00', location: 'Eläinkoulu Tampere' }
+    ],
+    '2025-02-22': [
+        { title: '🎉 Koirafestivaali Turku', time: '11:00', location: 'Ruissalo' }
+    ],
+    '2025-03-01': [
+        { title: '🏃 Lenkki labradorien kanssa', time: '09:00', location: 'Suomenlinna' }
+    ],
+    '2025-03-09': [
+        { title: '🐕 Retrieverien tapaaminen', time: '15:00', location: 'Kaivopuisto' }
+    ],
+    '2025-03-15': [
+        { title: '🎾 Agility-kilpailu', time: '10:00', location: 'Koirarata Tampere' }
+    ],
+    '2025-03-22': [
+        { title: '📖 Pennunkoulutus aloittelijoille', time: '11:00', location: 'Koirakoulu Helsinki' }
+    ],
+    '2025-03-29': [
+        { title: '🚶 Retki koirien kanssa', time: '10:00', location: 'Nuuksio' }
+    ],
+    '2025-04-05': [
+        { title: '🐕 Saksanpaimenkoirien kokoontuminen', time: '13:00', location: 'Töölönlahti' }
+    ],
+    '2025-04-12': [
+        { title: '🎪 Koiraopetuksen workshop', time: '14:00', location: 'Koirakoulu Oulu' }
+    ],
+    '2025-04-19': [
+        { title: '🏥 Rokotuspäivä koirille', time: '10:00', location: 'Eläinklinikka Lahti' }
+    ],
+    '2025-04-26': [
+        { title: '🎾 Frisbeekurssi koirille', time: '11:00', location: 'Puisto Jyväskylä' }
+    ],
+    '2025-05-03': [
+        { title: '🚗 Koira-auto näyttely', time: '10:00', location: 'Messukeskus Helsinki' }
+    ],
+    '2025-05-10': [
+        { title: '🌸 Kevätretki perheiden kanssa', time: '12:00', location: 'Seurasaari' }
+    ],
+    '2025-05-17': [
+        { title: '🏃 Canicross-tapahtuma', time: '09:00', location: 'Espoo' }
+    ],
+    '2025-05-24': [
+        { title: '🎉 Koirien uimarannan avajaiset', time: '13:00', location: 'Aurinkolahti' }
+    ],
+    '2025-05-31': [
+        { title: '📚 Koirakäyttäytymisen kurssi', time: '10:00', location: 'Koirakoulu Kuopio' }
+    ],
+    '2025-06-07': [
+        { title: '🏖️ Koirarannan turvallisuuskurssi', time: '11:00', location: 'Hietaranta' }
+    ],
+    '2025-06-14': [
+        { title: '🎪 Koiratemppu-esitys', time: '15:00', location: 'Kauppatori Turku' }
+    ],
+    '2025-06-21': [
+        { title: '🌞 Juhannusretki koirien kanssa', time: '10:00', location: 'Porvoo' }
+    ],
+    '2025-06-28': [
+        { title: '🐕 Bernhardinkoirien tapaaminen', time: '14:00', location: 'Temppeliaukio' }
+    ],
+    '2025-07-05': [
+        { title: '🏃 Kesäinen agility-harjoitus', time: '18:00', location: 'Koirarata Vantaa' }
+    ],
+    '2025-07-12': [
+        { title: '🚶 Iltakävely senioreiden kanssa', time: '19:00', location: 'Kaivopuisto' }
+    ],
+    '2025-07-19': [
+        { title: '🎉 Kesäjuhla koirille', time: '12:00', location: 'Linnanmäki' }
+    ],
+    '2025-07-26': [
+        { title: '🏖️ Uimapäivä koirille', time: '11:00', location: 'Pihlajasaari' }
+    ],
+    '2025-08-02': [
+        { title: '🎾 Kesäagility-kilpailu', time: '10:00', location: 'Koirarata Lahti' }
+    ],
+    '2025-08-09': [
+        { title: '📸 Koiravalokuvauskurssi', time: '13:00', location: 'Botanical Garden' }
+    ],
+    '2025-08-16': [
+        { title: '🚗 Matkailu koiran kanssa -info', time: '14:00', location: 'Koirakoulu Joensuu' }
+    ],
+    '2025-08-23': [
+        { title: '🏥 Ensiapukurssi koirille', time: '11:00', location: 'Eläinklinikka Pori' }
+    ],
+    '2025-08-30': [
+        { title: '🎪 Koiraterapia-esittely', time: '15:00', location: 'Vanhainkoti Helsinki' }
+    ],
+    '2025-09-06': [
+        { title: '🍂 Syksynkoitokset koirille', time: '10:00', location: 'Keskuspuisto' }
+    ],
+    '2025-09-13': [
+        { title: '🐕 Metsästyskoirien tapaaminen', time: '09:00', location: 'Nuuksio' }
+    ],
+    '2025-09-20': [
+        { title: '📖 Koiranomistajien neuvonta', time: '12:00', location: 'Koirakoulu Rovaniemi' }
+    ],
+    '2025-09-27': [
+        { title: '🎾 Syyagility-harjoitukset', time: '17:00', location: 'Koirarata Helsinki' }
+    ],
+    '2025-10-04': [
+        { title: '🏃 Hikingretki koirien kanssa', time: '10:00', location: 'Koli' }
+    ],
+    '2025-10-11': [
+        { title: '🎃 Halloween-juhla koirille', time: '16:00', location: 'Koirakoulu Seinäjoki' }
+    ],
+    '2025-10-18': [
+        { title: '🏥 Talviterveystarkastus', time: '09:00', location: 'Eläinklinikka Mikkeli' }
+    ],
+    '2025-10-25': [
+        { title: '📚 Talvikoulutuskurssi', time: '11:00', location: 'Koirakoulu Lappeenranta' }
+    ],
+    '2025-11-01': [
+        { title: '🎪 Koiranäyttely Oulu', time: '10:00', location: 'Ouluhalli' }
+    ],
+    '2025-11-08': [
+        { title: '🚶 Talvikävelyretki', time: '13:00', location: 'Suomenlinna' }
+    ],
+    '2025-11-15': [
+        { title: '🎾 Sisäagility-harjoitukset', time: '18:00', location: 'Liikuntahalli Vaasa' }
+    ],
+    '2025-11-22': [
+        { title: '📖 Koiran talvihoito-opastus', time: '14:00', location: 'Koirakoulu Hämeenlinna' }
+    ],
+    '2025-11-29': [
+        { title: '🎉 Jouluvalmistelut koirille', time: '12:00', location: 'Koirakoulu Kotka' }
+    ],
+    '2025-12-06': [
+        { title: '🎄 Joulunäyttely koirille', time: '11:00', location: 'Messukeskus Tampere' }
+    ],
+    '2025-12-13': [
+        { title: '❄️ Lumileikkipäivä', time: '10:00', location: 'Keskuspuisto' }
+    ],
+    '2025-12-20': [
+        { title: '🎅 Joulujuhla koirille', time: '15:00', location: 'Koirakoulu Rauma' }
+    ],
+    '2025-12-27': [
+        { title: '🎾 Vuodenvaihteen agility', time: '13:00', location: 'Koirarata Kouvola' }
     ]
 };
 
