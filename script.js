@@ -108,49 +108,109 @@ document.addEventListener('DOMContentLoaded', function() {
 function initializeMaps() {
     // Main map initialization
     if (document.getElementById('map')) {
-        mainMap = L.map('map').setView([64.9841, 25.7482], 5); // Center on Finland
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(mainMap);
-        
-        // Add sample dog-friendly locations
-        dogFriendlyLocations.forEach(location => {
-            const icon = getLocationIcon(location.type);
-            L.marker([location.lat, location.lng], {icon: icon})
-                .addTo(mainMap)
-                .bindPopup(`
-                    <div style="text-align: center;">
-                        <h4>🐾 ${location.name}</h4>
-                        <p>${location.description}</p>
-                        <small>Tyyppi: ${getLocationTypeText(location.type)}</small>
-                    </div>
-                `);
-        });
+        try {
+            // Check if Leaflet is available
+            if (typeof L === 'undefined') {
+                throw new Error('Leaflet library not available');
+            }
+            
+            mainMap = L.map('map').setView([64.9841, 25.7482], 5); // Center on Finland
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(mainMap);
+            
+            // Add sample dog-friendly locations
+            dogFriendlyLocations.forEach(location => {
+                const icon = getLocationIcon(location.type);
+                L.marker([location.lat, location.lng], {icon: icon})
+                    .addTo(mainMap)
+                    .bindPopup(`
+                        <div style="text-align: center;">
+                            <h4>🐾 ${location.name}</h4>
+                            <p>${location.description}</p>
+                            <small>Tyyppi: ${getLocationTypeText(location.type)}</small>
+                        </div>
+                    `);
+            });
+            
+            console.log('🗺️ Pääkartta ladattu onnistuneesti!');
+        } catch (error) {
+            console.warn('⚠️ Kartan lataus epäonnistui:', error.message);
+            showMapFallback('map');
+        }
     }
     
     // Location picker map initialization
     if (document.getElementById('locationMap')) {
-        locationMap = L.map('locationMap').setView([60.1699, 24.9384], 10); // Center on Helsinki
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(locationMap);
-        
-        // Add click handler for location selection
-        locationMap.on('click', function(e) {
-            if (selectedLocation) {
-                locationMap.removeLayer(selectedLocation);
+        try {
+            // Check if Leaflet is available
+            if (typeof L === 'undefined') {
+                throw new Error('Leaflet library not available');
             }
             
-            selectedLocation = L.marker(e.latlng)
-                .addTo(locationMap)
-                .bindPopup('Valittu sijainti 🐾')
-                .openPopup();
+            locationMap = L.map('locationMap').setView([60.1699, 24.9384], 10); // Center on Helsinki
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(locationMap);
+            
+            // Add click handler for location selection
+            locationMap.on('click', function(e) {
+                if (selectedLocation) {
+                    locationMap.removeLayer(selectedLocation);
+                }
                 
-            // Update address field with coordinates
-            document.getElementById('address').value = `Lat: ${e.latlng.lat.toFixed(4)}, Lng: ${e.latlng.lng.toFixed(4)}`;
-        });
+                selectedLocation = L.marker(e.latlng)
+                    .addTo(locationMap)
+                    .bindPopup('Valittu sijainti 🐾')
+                    .openPopup();
+                    
+                // Update address field with coordinates
+                document.getElementById('address').value = `Lat: ${e.latlng.lat.toFixed(4)}, Lng: ${e.latlng.lng.toFixed(4)}`;
+            });
+            
+            console.log('🗺️ Sijaintivalitsin ladattu onnistuneesti!');
+        } catch (error) {
+            console.warn('⚠️ Sijaintivalitsimen lataus epäonnistui:', error.message);
+            showMapFallback('locationMap');
+        }
+    }
+}
+
+// Show a clear fallback when map fails to load
+function showMapFallback(mapId) {
+    const mapElement = document.getElementById(mapId);
+    if (mapElement) {
+        mapElement.innerHTML = `
+            <div style="
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                padding: 2rem;
+                text-align: center;
+                background: linear-gradient(135deg, #FFF8DC 0%, #F0E68C 50%, #FFFACD 100%);
+                border-radius: 12px;
+                margin: 1rem;
+                box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+            ">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🗺️</div>
+                <div style="font-size: 1.3rem; font-weight: 600; color: #2C3E50; margin-bottom: 1rem;">
+                    Kartta ei ole käytettävissä
+                </div>
+                <div style="font-size: 1rem; color: #34495E; line-height: 1.6; max-width: 400px;">
+                    🐾 Interaktiivinen kartta koiraystävällisistä paikoista<br>
+                    📍 Kartan lataamisessa tapahtui virhe<br>
+                    🔄 Yritä päivittää sivu tai tarkista verkkoyhteytesi
+                </div>
+                <div style="margin-top: 1.5rem; font-size: 2rem;">🐕</div>
+            </div>
+        `;
+        
+        // Add a subtle animation to make it more engaging
+        mapElement.style.animation = 'fadeIn 0.5s ease-in';
     }
 }
 
