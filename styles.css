@@ -770,6 +770,62 @@ footer p::after {
     border-radius: 15px;
     border: 3px solid #4ECDC4;
     box-shadow: 0 4px 15px rgba(78, 205, 196, 0.2);
+    background: linear-gradient(135deg, #E8F8F5 0%, #D5F3F0 50%, #BFE9E3 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Map Loading State and Fallback */
+#map::before, #locationMap::before {
+    content: "🗺️ Kartta ladataan... \A\A🐾 Interaktiivinen Suomen kartta koiraystävällisistä paikoista \A\A⚠️ Jos kartta ei lataudu, tarkista verkkoyhteytesi \Atai käytä sivustoa offline-tilassa";
+    white-space: pre-line;
+    text-align: center;
+    color: #2C3E50;
+    font-size: 1.1rem;
+    font-weight: 500;
+    line-height: 1.6;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    margin: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border: 2px dashed #4ECDC4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+/* When map is successfully loaded, hide the fallback */
+#map.leaflet-container::before, 
+#locationMap.leaflet-container::before {
+    display: none;
+}
+
+/* Enhanced visual feedback for map containers */
+#map::after, #locationMap::after {
+    content: "🐕";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 2rem;
+    opacity: 0.3;
+    z-index: 0;
+    animation: mapDogFloat 3s ease-in-out infinite;
+}
+
+@keyframes mapDogFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
+    50% { transform: translateY(-5px) rotate(5deg); opacity: 0.5; }
+}
+
+/* Fade in animation for map fallbacks */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 #locationMap {
