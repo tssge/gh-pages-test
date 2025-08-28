@@ -286,3 +286,72 @@ footer p {
         padding: 1.5rem;
     }
 }
+
+/* Map Container */
+.map-container {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.map-placeholder {
+    background: #f8f9fa;
+    border: 2px dashed #28a745;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.finland-map {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+}
+
+.map-note {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #28a745;
+    font-weight: 500;
+}
+
+/* Events and Contact Sections */
+.events-info,
+.contact-info {
+    max-width: 700px;
+    margin: 2rem auto;
+    text-align: left;
+}
+
+.event-types ul {
+    list-style: none;
+    padding: 0;
+}
+
+.event-types li {
+    padding: 0.8rem 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.event-types li:last-child {
+    border-bottom: none;
+}
+
+.contact-methods {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-methods h3 {
+    color: #28a745;
+    margin-bottom: 1.5rem;
+}
+
+.contact-methods p {
+    margin: 1rem 0;
+    font-size: 1.1rem;
+}

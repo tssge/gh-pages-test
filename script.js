@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Add a simple console message for developers
-    console.log('🚀 GitHub Pages Example site loaded successfully!');
-    console.log('📖 Learn more about GitHub Pages: https://pages.github.com/');
+    console.log('🐕 Koiraystävälliset Paikat Suomessa sivusto ladattu onnistuneesti!');
+    console.log('🗺️ Löydä koiraystävällisiä paikkoja: Tutustu karttaan ja osioihin');
 });
 
 // Add a simple theme toggle (demonstration purposes)
