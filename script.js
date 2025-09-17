@@ -161,6 +161,7 @@ const sampleEvents = {
 
 // Sample dog-friendly locations
 const dogFriendlyLocations = [
+    // Helsinki area
     {
         name: "Koiraystävällinen Kahvila",
         lat: 60.1699,
@@ -181,6 +182,52 @@ const dogFriendlyLocations = [
         lng: 24.8069,
         type: "hotel",
         description: "Koiraystävällinen majoitus koko perheelle."
+    },
+    
+    // Tampere/Pirkanmaa area
+    {
+        name: "Eläinkoulu Tampere",
+        lat: 61.4978,
+        lng: 23.7610,
+        type: "vet",
+        description: "Koirakoulutuskurssit ja eläinlääkäripalvelut Tampereen sydämessä."
+    },
+    {
+        name: "Koirarata Tampere",
+        lat: 61.5134,
+        lng: 23.7842,
+        type: "park",
+        description: "Agility-rata ja koirapuisto harjoitteluineen."
+    },
+    {
+        name: "Messukeskus Tampere",
+        lat: 61.4867,
+        lng: 23.8123,
+        type: "event",
+        description: "Koiraystävälliset näyttelyt ja tapahtumat."
+    },
+    
+    // Turku area  
+    {
+        name: "Ruissalo Koirapuisto",
+        lat: 60.4344,
+        lng: 22.1656,
+        type: "park",
+        description: "Kaunis koirapuisto Ruissalossa, vapaa-alue ja uimaranta."
+    },
+    {
+        name: "Kauppatori Turku",
+        lat: 60.4514,
+        lng: 22.2681,
+        type: "event",
+        description: "Koiratemppu-esitykset ja tapahtumat Turun sydämessä."
+    },
+    {
+        name: "Koiraystävällinen Turku Café",
+        lat: 60.4485,
+        lng: 22.2687,
+        type: "restaurant",
+        description: "Viihtyisä kahvila koirien kanssa Turun keskustassa."
     }
 ];
 
